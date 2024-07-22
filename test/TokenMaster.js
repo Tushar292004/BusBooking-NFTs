@@ -4,6 +4,8 @@ const NAME = "TokenMaster"
 const SYMBOL = "TM"
 
 const OCCASION_NAME = "ETH Texas"
+const OCCASION_START = "ETH Texas START"
+const OCCASION_END = "ETH Texas END"
 const OCCASION_COST = ethers.utils.parseUnits('1', 'ether')
 const OCCASION_MAX_TICKETS = 45
 const OCCASION_DATE = "Apr 27"
@@ -25,6 +27,8 @@ describe("TokenMaster", () => {
 
     const transaction = await tokenMaster.connect(deployer).list(
       OCCASION_NAME,
+      OCCASION_START,
+      OCCASION_END,
       OCCASION_COST,
       OCCASION_MAX_TICKETS,
       OCCASION_DATE,
@@ -57,6 +61,8 @@ describe("TokenMaster", () => {
       const occasion = await tokenMaster.getOccasion(1)
       expect(occasion.id).to.be.equal(1)
       expect(occasion.name).to.be.equal(OCCASION_NAME)
+      expect(occasion.start).to.be.equal(OCCASION_START)
+      expect(occasion.end).to.be.equal(OCCASION_END)
       expect(occasion.cost).to.be.equal(OCCASION_COST)
       expect(occasion.tickets).to.be.equal(OCCASION_MAX_TICKETS)
       expect(occasion.date).to.be.equal(OCCASION_DATE)

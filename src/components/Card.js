@@ -14,7 +14,7 @@ const Card = ({ occasion, toggle, setToggle, setOccasion }) => {
         </p>
 
         <h3 className='card__name'>
-          {occasion.name}
+          {occasion.start} to {occasion.end}
         </h3>
 
         <div className="card__location">

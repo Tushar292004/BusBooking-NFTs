@@ -11,6 +11,8 @@ contract TokenMaster is ERC721 {
     struct Occasion {
         uint256 id;
         string name;
+        string start;
+        string end;
         uint256 cost;
         uint256 tickets;
         uint256 maxTickets;
@@ -40,6 +42,8 @@ contract TokenMaster is ERC721 {
     
     function list(
         string memory _name,
+        string memory _start,
+        string memory _end,
         uint256 _cost,
         uint256 _maxTickets,
         string memory _date,
@@ -51,6 +55,8 @@ contract TokenMaster is ERC721 {
         occasions[totalOccasions] = Occasion(
             totalOccasions,
             _name,
+            _start,
+            _end,
             _cost,
             _maxTickets,
             _maxTickets,

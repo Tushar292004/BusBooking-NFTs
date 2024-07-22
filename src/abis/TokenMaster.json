@@ -169,6 +169,16 @@
             "type": "string"
           },
           {
+            "internalType": "string",
+            "name": "start",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "end",
+            "type": "string"
+          },
+          {
             "internalType": "uint256",
             "name": "cost",
             "type": "uint256"
@@ -284,6 +294,16 @@
       {
         "internalType": "string",
         "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_start",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_end",
         "type": "string"
       },
       {

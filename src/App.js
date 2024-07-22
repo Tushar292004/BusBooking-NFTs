@@ -29,12 +29,12 @@ function App() {
 
     const network = await provider.getNetwork()
     const address  = config[network.chainId].TokenMaster.address
-    console.log(address);
+    // console.log(address);
     const tokenMaster = new ethers.Contract(address, TokenMaster, provider)
     setTokenMaster(tokenMaster)
 
     const totalOccasions = await tokenMaster.totalOccasions()
-    console.log( {totalOccasions: totalOccasions.toString()} )
+    // console.log( {totalOccasions: totalOccasions.toString()} )
     const occasions = []
 
     for (var i = 1; i <= totalOccasions; i++) {
@@ -43,7 +43,7 @@ function App() {
     }
 
     setOccasions(occasions)
-    console.log(occasions);
+    // console.log(occasions);
 
     window.ethereum.on('accountsChanged', async () => {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
