@@ -168,7 +168,12 @@ header {
   align-items: center;
 }
 
+.datepicker{
+  padding: 0.25vh;
+}
 .sort__select {
+  padding: 0.25vh;
+
   width: 225px;
   height: 40px;
 
@@ -180,12 +185,15 @@ header {
   align-items: center;
 
   cursor: pointer;
+
+  margin-left: 1.2rem;
+  font-size: 1.2rem;
 }
 
-.sort__select p {
+/* .sort__select p {
   margin-left: 10px;
   font-size: clamp(0.80rem, 2vw, 1rem);
-}
+} */
 
 .sort__select img {
   width: 15px;
@@ -197,6 +205,8 @@ header {
   border: 1px solid var(--clr-light-blue);
   outline: 2px solid var(--clr-light-blue);
 }
+
+
 
 /* ------------------------------------------------------ */
 /* -- CARDS -- */

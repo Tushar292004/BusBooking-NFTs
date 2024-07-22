@@ -8,7 +8,7 @@ import Card from './components/Card'
 import SeatChart from './components/SeatChart'
 
 // ABIs
-import TokenMaster from './abis/TokenMaster.json'
+import BusBooking from './abis/BusBooking.json'
 
 // Config
 import config from './config.json'
@@ -17,28 +17,32 @@ function App() {
   const [provider, setProvider] = useState(null)
   const [account, setAccount] = useState(null)
 
-  const [tokenMaster, setTokenMaster] = useState(null)
+  const [busBooking, setBusBooking] = useState(null)
   const [occasions, setOccasions] = useState([])
 
   const [occasion, setOccasion] = useState({})
   const [toggle, setToggle] = useState(false)
+
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const [date, setDate] = useState(null);
 
   const loadBlockchainData = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     setProvider(provider)
 
     const network = await provider.getNetwork()
-    const address  = config[network.chainId].TokenMaster.address
+    const address  = config[network.chainId].BusBooking.address
     // console.log(address);
-    const tokenMaster = new ethers.Contract(address, TokenMaster, provider)
-    setTokenMaster(tokenMaster)
+    const busBooking = new ethers.Contract(address, BusBooking, provider)
+    setBusBooking(busBooking)
 
-    const totalOccasions = await tokenMaster.totalOccasions()
+    const totalOccasions = await busBooking.totalOccasions()
     // console.log( {totalOccasions: totalOccasions.toString()} )
     const occasions = []
 
     for (var i = 1; i <= totalOccasions; i++) {
-      const occasion = await tokenMaster.getOccasion(i)
+      const occasion = await busBooking.getOccasion(i)
       occasions.push(occasion)
     }
 
@@ -56,6 +60,14 @@ function App() {
     loadBlockchainData()
   }, [ occasions, occasion, toggle])
 
+  const filteredOccasions = occasions.filter((occasion) => {
+    return (
+      (from === '' || occasion.start === from) &&
+      (to === '' || occasion.end === to) &&
+      (date === null || new Date(occasion.date).toDateString() === new Date(date).toDateString())
+    );
+  });
+
   return (
     <div>
       <header>
@@ -64,14 +76,14 @@ function App() {
         <h2 className="header__title"><strong>Bus</strong> Tickets</h2>
       </header>
 
-      <Sort />
+      <Sort setFrom={setFrom} setTo={setTo} setDate={setDate} />
 
       <div className='cards'>
-        {occasions.map((occasion, index) => (
+      {filteredOccasions.map((occasion, index) => (
           <Card
             occasion={occasion}
             id={index + 1}
-            tokenMaster={tokenMaster}
+            busBooking={busBooking}
             provider={provider}
             account={account}
             toggle={toggle}
@@ -85,7 +97,7 @@ function App() {
       {toggle && (
         <SeatChart
           occasion={occasion}
-          tokenMaster={tokenMaster}
+          busBooking={busBooking}
           provider={provider}
           setToggle={setToggle}
         />

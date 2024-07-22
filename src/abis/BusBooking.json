@@ -214,7 +214,7 @@
             "type": "string"
           }
         ],
-        "internalType": "struct TokenMaster.Occasion",
+        "internalType": "struct BusBooking.Occasion",
         "name": "",
         "type": "tuple"
       }
