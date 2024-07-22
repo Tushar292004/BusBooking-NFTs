@@ -37,7 +37,7 @@ describe("TokenMaster", () => {
       OCCASION_DESTINATION
     )
 
-    // wait for the transaction to include in a block to test 
+    //wait for the transaction to include in a block to test 
     await transaction.wait()
   })
 

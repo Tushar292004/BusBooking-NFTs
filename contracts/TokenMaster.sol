@@ -4,7 +4,7 @@ pragma solidity ^0.8.9;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract TokenMaster is ERC721 {
-    address public owner; //owner of the sc 
+    address public owner; //owner of the smart contract
     uint256 public totalOccasions;  
     uint256 public totalSupply;
 
