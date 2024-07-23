@@ -32,7 +32,7 @@ function App() {
     setProvider(provider)
 
     const network = await provider.getNetwork()
-    const address  = config[network.chainId].BusBooking.address
+    const address = config[network.chainId].BusBooking.address
     // console.log(address);
     const busBooking = new ethers.Contract(address, BusBooking, provider)
     setBusBooking(busBooking)
@@ -58,7 +58,7 @@ function App() {
 
   useEffect(() => {
     loadBlockchainData()
-  }, [ occasions, occasion, toggle])
+  }, [occasions, occasion, toggle])
 
   const filteredOccasions = occasions.filter((occasion) => {
     return (
@@ -79,7 +79,7 @@ function App() {
       <Sort setFrom={setFrom} setTo={setTo} setDate={setDate} />
 
       <div className='cards'>
-      {filteredOccasions.map((occasion, index) => (
+        {filteredOccasions.map((occasion, index) => (
           <Card
             occasion={occasion}
             id={index + 1}
