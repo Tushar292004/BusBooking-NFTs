@@ -1,4 +1,4 @@
-# Tokenmaster
+# BusTicker Booking - NFT System
 
 ## Technology Stack & Tools
 

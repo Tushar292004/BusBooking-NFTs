@@ -23,6 +23,7 @@ const SeatChart = ({ occasion, busBooking, provider, setToggle }) => {
     await transaction.wait()
 
     setHasSold(true)
+    getSeatsTaken()
   }
 
   useEffect(() => {
